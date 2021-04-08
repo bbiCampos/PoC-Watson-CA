@@ -18,4 +18,19 @@ public class BusinessRules {
     @JsonProperty("userDataValid")
     public Boolean userDataValid;
 
+    @JsonProperty("justifiedAbsence")
+    public Boolean justifiedAbsence;
+
+    @JsonProperty("satisfactionSurvey")
+    public Boolean satisfactionSurvey;
+
+    @JsonProperty("lastScript")
+    public Boolean lastScript;
+
+    @JsonProperty("offense")
+    public Boolean offense;
+
+    @JsonProperty("anythingElse")
+    public Boolean anythingElse;
+
 }

@@ -48,8 +48,23 @@ public class JsonService {
         if (response.getContext().get("first_script") != null){
             businessRules.setFirstScript(true);
         }
-        if (response.getContext().get("dados_ok") != null){
+        if (response.getContext().get("user_data_valid") != null){
             businessRules.setUserDataValid(true);
+        }
+        if (response.getContext().get("justified_absence") != null){
+            businessRules.setJustifiedAbsence(true);
+        }
+        if (response.getContext().get("satisfaction_survey") != null){
+            businessRules.setSatisfactionSurvey(true);
+        }
+        if (response.getContext().get("last_script") != null){
+            businessRules.setLastScript(true);
+        }
+        if (response.getContext().get("offense") != null){
+            businessRules.setOffense(true);
+        }
+        if (response.getContext().get("anything_else") != null){
+            businessRules.setAnythingElse(true);
         }
         iaAnalysis.getBusinessRules().add(businessRules);
 
