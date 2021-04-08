@@ -14,4 +14,8 @@ public class BusinessRules {
 
     @JsonProperty("firstScript")
     public Boolean firstScript;
+
+    @JsonProperty("userDataValid")
+    public Boolean userDataValid;
+
 }

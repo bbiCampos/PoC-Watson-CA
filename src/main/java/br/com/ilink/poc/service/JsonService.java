@@ -48,6 +48,9 @@ public class JsonService {
         if (response.getContext().get("first_script") != null){
             businessRules.setFirstScript(true);
         }
+        if (response.getContext().get("dados_ok") != null){
+            businessRules.setUserDataValid(true);
+        }
         iaAnalysis.getBusinessRules().add(businessRules);
 
         sentence.setIaAnalysis(iaAnalysis);
