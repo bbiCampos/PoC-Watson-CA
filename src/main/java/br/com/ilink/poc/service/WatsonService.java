@@ -8,7 +8,7 @@ import com.ibm.watson.assistant.v1.model.MessageInput;
 import com.ibm.watson.assistant.v1.model.MessageOptions;
 import com.ibm.watson.assistant.v1.model.MessageResponse;
 
-import static br.com.ilink.poc.service.ControlContext.*;
+import static br.com.ilink.poc.service.ControlContext.getNLUContext;
 import static br.com.ilink.poc.service.MessageHandling.parseMessage;
 
 
@@ -46,6 +46,9 @@ public class WatsonService {
         MessageResponse response = service.message(options).execute().getResult();
 
         //botContext = response.getContext();
+
+        System.out.println(response);
+        System.out.println("---------------------------");
 
         return response;
     }

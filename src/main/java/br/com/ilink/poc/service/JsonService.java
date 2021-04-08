@@ -1,9 +1,6 @@
 package br.com.ilink.poc.service;
 
-import br.com.ilink.poc.model.Entities;
-import br.com.ilink.poc.model.IaAnalysis;
-import br.com.ilink.poc.model.Sentence;
-import br.com.ilink.poc.model.Top2Intent;
+import br.com.ilink.poc.model.*;
 import com.ibm.watson.assistant.v1.model.MessageResponse;
 
 public class JsonService {
@@ -46,6 +43,12 @@ public class JsonService {
             entities.setDate(String.valueOf(response.getContext().get("date")));
         }
         iaAnalysis.getEntities().add(entities);
+
+        BusinessRules businessRules = new BusinessRules();
+        if (response.getContext().get("first_script") != null){
+            businessRules.setFirstScript(true);
+        }
+        iaAnalysis.getBusinessRules().add(businessRules);
 
         sentence.setIaAnalysis(iaAnalysis);
 

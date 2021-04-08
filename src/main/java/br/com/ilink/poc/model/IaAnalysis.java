@@ -18,4 +18,7 @@ public class IaAnalysis {
     @JsonProperty("entities")
     public List<Entities> entities = new ArrayList<>();
 
+    @JsonProperty("businessRules")
+    public List<BusinessRules> businessRules = new ArrayList<>();
+
 }
