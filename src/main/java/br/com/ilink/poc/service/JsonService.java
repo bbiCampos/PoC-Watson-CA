@@ -5,19 +5,10 @@ import com.ibm.watson.assistant.v1.model.MessageResponse;
 
 public class JsonService {
 
-    public Sentence getSentence (Sentence input){
+    public IaAnalysis getIaAnalysis (Sentence input, WatsonCredentials credentials){
 
         WatsonService watsonService = new WatsonService();
-        MessageResponse response = watsonService.callWatson(input.getMessage());
-
-        Sentence sentence = new Sentence();
-
-        sentence.setStartDateTime(input.getStartDateTime());
-        sentence.setStart(input.getStart());
-        sentence.setEnd(input.getEnd());
-        sentence.setSentenceId(input.getSentenceId());
-        sentence.setSpeaker(input.getSpeaker());
-        sentence.setMessage(input.getMessage());
+        MessageResponse response = watsonService.callWatson(input.getMessage(), credentials);
 
         Top2Intent intents = new Top2Intent();
         intents.setPrimaryIntent(response.getIntents().get(0).intent());
@@ -68,8 +59,6 @@ public class JsonService {
         }
         iaAnalysis.getBusinessRules().add(businessRules);
 
-        sentence.setIaAnalysis(iaAnalysis);
-
-        return sentence;
+        return iaAnalysis;
     }
 }

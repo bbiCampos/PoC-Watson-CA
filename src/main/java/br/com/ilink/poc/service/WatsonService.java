@@ -1,5 +1,6 @@
 package br.com.ilink.poc.service;
 
+import br.com.ilink.poc.model.WatsonCredentials;
 import com.ibm.cloud.sdk.core.http.HttpConfigOptions;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
@@ -14,19 +15,13 @@ import static br.com.ilink.poc.service.MessageHandling.parseMessage;
 
 public class WatsonService {
 
+    public MessageResponse callWatson(String userMessage, WatsonCredentials credentials) {
 
-    private static final String WORKSPACE_ID = "26584390-daac-4850-b97b-6d1b2d609b30";
-    private static final String API_KEY = "rJLq5s2EFJkrJ_DxRpqK4TkfPtSlib0utGTQOdQDh4ja";
-    private static final String URL = "https://gateway.watsonplatform.net/assistant/api/";  //Default URL
-
-
-    public MessageResponse callWatson(String userMessage) {
-
-        Authenticator authenticator = new IamAuthenticator(API_KEY);
+        Authenticator authenticator = new IamAuthenticator(credentials.API_KEY);
 
         Assistant service = new Assistant("2021-01-15", authenticator);
 
-        service.setEndPoint(URL);
+        service.setEndPoint(credentials.URL);
 
         HttpConfigOptions configOptions = new HttpConfigOptions.Builder()
                 .disableSslVerification(true)
@@ -37,7 +32,7 @@ public class WatsonService {
         input.setText(parseMessage(userMessage));
 
         MessageOptions options = new MessageOptions
-                .Builder(WORKSPACE_ID)
+                .Builder(credentials.SKILL_ID)
                 .input(input)
                 .alternateIntents(true)
                 .context(getNLUContext())
