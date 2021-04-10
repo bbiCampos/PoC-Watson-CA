@@ -1,13 +1,17 @@
 curl --request GET \
   --url http://localhost:8080/ \
   --header 'Content-Type: application/json' \
-  --data '      {
-         "startDateTime":"2021-03-08T22:54:59.727Z",
-         "start":0.64,
-         "end":1.64,
-         "sentenceId":1,
-         "speaker":2,
-         "message":"88232084000130 olá eu sou a Isa a gente virtual da sky que bom falar com você ainda não identificamos o pagamento da sua fatura dezenove de fevereiro no valor de noventa e cinco reais e cinco centavos e não queremos que fiquei sem o seu sinal você pode pagar sem sair de casa prefere pagar no cartão de crédito no boleto ou na lotérica asds@gmail.com 11122233344 e meu cnpj  "
-         
-      }
-'
+  --data '{
+  "credentials": {
+    "skillId": "d42be224-1086-435d-91e6-45dd1b28fb02",
+    "apiKey": "rJLq5s2EFJkrJ_DxRpqK4TkfPtSlib0utGTQOdQDh4ja"
+  },
+	"sentence": {
+    "startDateTime": "2021-03-08T22:54:59.727Z",
+    "start": 0.64,
+    "end": 1.64,
+    "sentenceId": 1,
+    "speaker": 2,
+    "message": "Teste usando as credenciais para CLARO NET"
+  }
+}'
